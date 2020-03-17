@@ -23,7 +23,6 @@ namespace ToDoList
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddMvc();
-
       services.AddEntityFrameworkMySql()
         .AddDbContext<ToDoListContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
@@ -46,4 +45,5 @@ namespace ToDoList
       });
     }
   }
+  
 }
