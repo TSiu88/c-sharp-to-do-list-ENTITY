@@ -3,6 +3,8 @@ using ToDoList.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System;
 
 namespace ToDoList.Controllers
 {
@@ -38,6 +40,8 @@ namespace ToDoList.Controllers
     public ActionResult Details(int id)
     {
       Category thisCategory = _db.Categories.FirstOrDefault(catogory => catogory.CategoryId == id);
+      Console.WriteLine(thisCategory.Items);     
+      thisCategory.Items = _db.Items.Where(item => item.CategoryId == id).ToList();
       return View(thisCategory);
     }
 
